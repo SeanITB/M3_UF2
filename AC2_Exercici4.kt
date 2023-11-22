@@ -8,10 +8,14 @@ fun main(){
     println("Aquest programa, a partir d'un mes i un any, et diu el numero de dies que te aquell mes")
 
     // Llegir les entrades
+    var mes: Int = 0
     do{
-        var mes: Int = comprobarEnter(scan)
-
-    }while (mes>12)
+        mes = comprobarEnter(scan)
+        if (mes>12 && mes<1){
+            println("ERROR: El més no és coorecte")
+            mes = comprobarEnter(scan)
+        }
+    }while (mes>12 && mes<1)
     val any: Int = comprobarEnter(scan)
 
     // Mirarar el dia del any
@@ -52,3 +56,4 @@ fun diaAny(mes: Int, any: Int): Int {
 
     return numeroDies
 }
+
