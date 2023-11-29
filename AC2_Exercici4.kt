@@ -10,6 +10,7 @@ fun main(){
     // Llegir les entrades
     var mes: Int = 0
     do{
+        println("")
         mes = comprobarEnter(scan)
         if (mes>12 && mes<1){
             println("ERROR: El més no és coorecte")
@@ -29,31 +30,13 @@ fun main(){
 fun diaAny(mes: Int, any: Int): Int {
     val numeroDies: Int
 
-    //Definir dies de mes
-    val mes31: Int = 31
-    val mes28: Int = 28
-    val mes29: Int = 29
-    val mes30: Int = 30
+    // Cada valor representa el numero de dies d'un mes
+    val arrayMesos: Array<Int> = arrayOf(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
 
-    // Busacr el dia
-    when (mes) {
-        1 -> numeroDies = mes31
-        2 -> {
-            if (any%4==0 && any%400==0 && any%100!=0) numeroDies = mes29
-            else numeroDies = mes28
-        }
-        3 -> numeroDies = mes31
-        4 -> numeroDies = mes30
-        5 -> numeroDies = mes31
-        6 -> numeroDies = mes30
-        7 -> numeroDies = mes31
-        8 -> numeroDies = mes31
-        9 -> numeroDies = mes30
-        10 -> numeroDies = mes31
-        11 -> numeroDies = mes30
-        else -> numeroDies = mes31
-    }
-
+    // Busacr numero de dies
+    if (mes == 2 && any%4==0 && any%100!=0 || any%400==0 ) numeroDies = 29
+    else numeroDies = arrayMesos[mes - 1] // -1 pq els index de l'array començen per 0
+    
     return numeroDies
 }
 
